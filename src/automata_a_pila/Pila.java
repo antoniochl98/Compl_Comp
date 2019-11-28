@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Pila {
 	
-	public ArrayList<String> pila_;
+	private ArrayList<String> pila_;
 	
 	public Pila(String simbolo_inicial) {
 		pila_.add(simbolo_inicial);
@@ -17,8 +17,8 @@ public class Pila {
 		pila_=pila;
 	}
 	
-	public Pila(Object clone) {
-		pila_=(ArrayList<String>) clone;
+	public Pila(Pila clone) {
+		pila_=(ArrayList<String>) clone.pila_.clone();
 	}
 
 	public boolean isEmpty() {
@@ -39,8 +39,9 @@ public class Pila {
 		pila_.add(simbolo);
 	}
 	
-	public Pila clone() {
-		return new Pila(pila_.clone());
+	public Object clone() {
+		ArrayList<String> pila=(ArrayList<String>) pila_.clone();
+		return new Pila(pila);
 	}
 
 }
